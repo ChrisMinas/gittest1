@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<flow name="alh-mule-app_template_v1Flow" doc:id="af75b72c-aaf3-4ae9-858c-759c2ec655a2" >
+		<scheduler doc:name="Scheduler" doc:id="f2a8e982-7e30-4840-9f1c-f0b70c7a991b" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="10" timeUnit="MINUTES"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="1e366c6b-83a5-4d3e-9151-5bfe22757d19" message="Start"/>
+		<logger level="INFO" doc:name="Logger_Display_applicationEnvironment" doc:id="394e54f4-8766-4d20-9697-c19cff60b28a" message="applicationEnvironment property value is ${applicationEnvironment}"/>
+		<logger level="INFO" doc:name="Logger_Display_env" doc:id="9fc3a969-6468-4de6-922e-a62c3eec245f" message="env property value is ${env}"/>
+		<flow-ref doc:name="alh-mule-app_template_v1:sql_server_SELECT" doc:id="1a434b79-e9e5-423e-a5a1-9965ec1c6006" name="alh-mule-app_template_v1:sql_server_SELECT"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b7cc54db-afbf-4ea6-9ba8-802a2ddb201a" message="End"/>
+	</flow>
+	<sub-flow name="alh-mule-app_template_v1:sql_server_SELECT" doc:id="797b3e12-e2cd-4fad-a5a0-f27f7652ab15" >
+		<db:select doc:name="Select" doc:id="fe48fff6-e057-4172-b29a-c2ab6c0a3050" config-ref="SQL-SERVER-Database_Config">
+			<db:sql >SELECT *
+FROM mule_lock</db:sql>
+		</db:select>
+	</sub-flow>
+</mule>

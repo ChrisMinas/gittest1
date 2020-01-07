@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<configuration-properties doc:name="Configuration properties" doc:id="590ae41a-46a8-46d9-9516-5ade387d17bb" file="mule-app.properties" doc:description="Created so that mule-app.properties can be used. This properties file is used to define global properties to be used regardless of environment"/>
+	<configuration-properties doc:name="Configuration properties" doc:id="9a06f778-e7d9-4696-b99a-259c6bff6016" file="envProperties/${applicationEnvironment}.properties" doc:description="Determines which .properties will be used depending oin the value of the global property applicationEnvironment"/>
+	<global-property doc:name="Global Property" doc:id="22f14d32-d8cf-46a7-8fe3-a7c60be7a514" name="applicationEnvironment" value="test" doc:description="This global prperty determines which .properties file will be used. Valid values are dev or test or prod"/>
+	<db:config name="SQL-SERVER-Database_Config" doc:name="Database Config" doc:id="4ecffdfb-c312-4d3f-a377-4db3aa008af4" >
+		<db:mssql-connection port="${dbPortSQLServer}" host="${ALHEMULE_Host}" user="${ALHEMULE_User}" password="${ALHEMULE_User_Password}" databaseName="${ALHEMULE_Name}"/>
+	</db:config>
+</mule>

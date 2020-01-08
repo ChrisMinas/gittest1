@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="gittest3Flow" doc:id="6c2124cc-78fb-4bde-bffb-02bb6cc5600f" >
+		<scheduler doc:name="Scheduler" doc:id="e51dabe7-dff5-48e3-a04c-90930ea5a917" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="10" timeUnit="MINUTES"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="72b8cbfe-54cc-42a8-9657-7c0422c8e666" />
+	</flow>
+</mule>
